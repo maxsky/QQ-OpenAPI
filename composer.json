@@ -1,0 +1,30 @@
+{
+    "name": "maxsky/qq-openapi",
+    "description": "QQ Open API PHP SDK.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Max Sky",
+            "email": "max940213@live.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-sockets": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tencent\\QQ\\Open\\": "src"
+        },
+        "files": [
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "minimum-stability": "dev"
+}
