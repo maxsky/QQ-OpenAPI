@@ -27,9 +27,9 @@ $openApi = (new OpenApiV3('App ID', 'App Key'))->setServerName('openapi.tencenty
 ```php
 // 请求的接口路由地址一定是左斜杠 '/' 开头
 $openApi->api('/v3/user/get_info', [
-            'openkey' => 'Access Token',
-            'openid' => 'OpenID',
-            'pf' => 'qzone'
+    'openkey' => 'Access Token',
+    'openid' => 'OpenID',
+    'pf' => 'qzone'
 ]);
 ```
 
