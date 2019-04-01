@@ -83,7 +83,7 @@ class OpenApiV3 {
      *
      * @return array 结果数组
      */
-    public function api($script_name, $params, $method = 'get', $protocol = 'https') {
+    public function api($script_name, $params, $method = 'get', $protocol = 'http') {
         // 检查 openid 是否为空
         if (!isset($params['openid']) || empty($params['openid'])) {
             return [
@@ -171,7 +171,7 @@ class OpenApiV3 {
      *
      * @return array 结果数组
      */
-    public function apiUploadFile($script_name, $params, $array_files, $protocol = 'https') {
+    public function apiUploadFile($script_name, $params, $array_files, $protocol = 'http') {
         // 检查 openid 是否为空
         if (!isset($params['openid']) || empty($params['openid'])) {
             return [
