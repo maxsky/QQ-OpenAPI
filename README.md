@@ -17,23 +17,28 @@ QQ 开放平台 Open API，修改自官方 SDK v3.0.9[2013-05-30]
 $openApi = (new OpenAPIv3('AppID', 'AppKey'))->setServerName('https://openapi.tencentyun.com');
 ```
 
-其中，`AppId `及 `AppKey `需在 [腾讯应用开放平台 - 我的应用](https://app.open.qq.com/p/app/list) 添加应用后获取。
+其中，`AppID `及 `AppKey `需在 [腾讯应用开放平台 - 我的应用](https://app.open.qq.com/p/app/list) 添加应用后获取。
 
 ### 例子：获取用户信息
 
 ```php
 // 请求的接口路由地址一定是左斜杠 '/' 开头
-$result = $openApi->api('/v3/user/get_info', 'POST',[
-    'openkey' => 'Access Token',
-    'openid' => 'OpenID',
-    'pf' => 'qzone'
-]);
+$route = '/v3/user/get_info';
 
-/** @var string $result */
-print_r($result);
+try {
+    $result = $openApi->api($route, 'POST', $params);
+} catch (Throwable $e) {
+    print_r('Error Message: ' . $e->getMessage());
+    print_r('Error Code: ' . $e->getCode());
 
-// 这里直接封装了一个获取用户信息方法
-$result = (new \Tencent\QQ\Open\UserAPI('AppID', 'AppKey'))->getInfo('AccessToken', 'OpenID');
+    if ($e instanceof ClientException) {
+        print_r($e->getResponse());
+    } elseif ($e instanceof BadResponseException) {
+        print_r(json_decode($e->getResponse()->getBody(), true));
+    }
+
+    die;
+}
 
 /** @var string $result */
 print_r($result);
@@ -42,4 +47,20 @@ print_r($result);
 解释一下：`openkey` 为客户端（App 等）唤起 QQ，用户点击允许登录后返回的 **Access Token**，**OpenID** 也是，`pf` 一般来说填写 `qzone` 即可。
 
 返回值参考：[v3/user/get_info - 2.7 返回参数说明 - 腾讯开放平台](https://wiki.open.qq.com/wiki/v3/user/get_info#2.7.09.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E8.AF.B4.E6.98.8E)
+
+
+
+## 请求头
+
+参考 GuzzleHttp 的 `options` 参数设置：
+
+```php
+$result = $openApi->api('/route/path', 'POST', [
+    'param1' => 'value1',
+    'param2' => 'value2'
+], [
+    'Accept' => 'application/json',
+    'Content-Type' => 'application/x-www-form-urlencoded'
+]);
+```
 

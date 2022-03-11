@@ -28,24 +28,24 @@ class Test_OpenAPI extends TestCase {
             'pf' => 'qzone'
         ];
 
-        $route = '/v3/user/get_info';
+$route = '/v3/user/get_info';
 
-        try {
-            $result = $openApi->api($route, 'POST', $params, []);
-        } catch (Throwable $e) {
-            print_r('Error Message: ' . $e->getMessage());
-            print_r('Error Code: ' . $e->getCode());
+try {
+    $result = $openApi->api($route, 'POST', $params, []);
+} catch (Throwable $e) {
+    print_r('Error Message: ' . $e->getMessage());
+    print_r('Error Code: ' . $e->getCode());
 
-            if ($e instanceof ClientException) {
-                print_r($e->getResponse());
-            } elseif ($e instanceof BadResponseException) {
-                print_r(json_decode($e->getResponse()->getBody(), true));
-            }
+    if ($e instanceof ClientException) {
+        print_r($e->getResponse());
+    } elseif ($e instanceof BadResponseException) {
+        print_r(json_decode($e->getResponse()->getBody(), true));
+    }
 
-            die;
-        }
+    die;
+}
 
-        print_r($result);
+print_r($result);
 
         $this->assertTrue($result['ret'] === 0);
     }
