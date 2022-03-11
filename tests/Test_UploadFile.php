@@ -12,7 +12,7 @@ use Tencent\QQ\Open\OpenAPIv3;
 class Test_UploadFile extends TestCase {
 
     // 应用基本信息
-    private $appId = '';
+    private $appId = 123456;
     private $appKey = '';
     // OpenAPI 的服务器 IP
     // 最新的 API 服务器地址请参考 Wiki文档：https://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3#OpenAPI_V3.0.E8.B0.83.E7.94.A8.E8.AF.B4.E6.98.8E
@@ -45,6 +45,8 @@ class Test_UploadFile extends TestCase {
 
             die;
         }
+
+        print_r($result['msg']);
 
         $this->assertTrue($result['ret'] === 0);
     }
