@@ -12,11 +12,11 @@ use Tencent\QQ\Open\OpenAPIv3;
 class Test_OpenAPI extends TestCase {
 
     // 应用基本信息
-    private $appId = 123456;
-    private $appKey = '';
+    private $appId = 'AppID';
+    private $appKey = 'AppKey';
     // OpenAPI 的服务器 IP
     // 最新的 API 服务器地址请参考 Wiki 文档：https://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3#OpenAPI_V3.0.E8.B0.83.E7.94.A8.E8.AF.B4.E6.98.8E
-    private $server_name = 'https://openapi.tencentyun.com';
+    private $server_name = 'https://openapi.sparta.html5.qq.com'; // https://openapi.tencentyun.com
 
     public function testGetUserInfo() {
         $openApi = (new OpenAPIv3($this->appId, $this->appKey))->setServerName($this->server_name);
@@ -24,12 +24,11 @@ class Test_OpenAPI extends TestCase {
         // 一般取用户信息用 qzone 即可
         $params = [
             'openkey' => 'Access Token',
-            'openid' => 'User Open ID',
+            'openid' => 'Open ID',
             'pf' => 'qzone'
         ];
 
         $route = '/v3/user/get_info';
-
 
         try {
             $result = $openApi->api($route, 'POST', $params, []);
@@ -46,7 +45,7 @@ class Test_OpenAPI extends TestCase {
             die;
         }
 
-        print_r($result['msg']);
+        print_r($result);
 
         $this->assertTrue($result['ret'] === 0);
     }

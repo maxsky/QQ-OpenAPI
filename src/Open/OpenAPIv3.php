@@ -47,10 +47,10 @@ class OpenAPIv3 {
     /**
      * 构造函数
      *
-     * @param int    $appId  应用 ID
+     * @param string $appId  应用 ID
      * @param string $appKey 应用密钥
      */
-    public function __construct(int $appId, string $appKey) {
+    public function __construct(string $appId, string $appKey) {
         $this->appId = $appId;
         $this->appKey = $appKey;
     }
