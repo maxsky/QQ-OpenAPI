@@ -10,18 +10,21 @@
         }
     ],
     "require": {
+        "php": ">=7.1",
         "ext-curl": "*",
         "ext-json": "*",
-        "ext-sockets": "*"
+        "ext-sockets": "*",
+        "guzzlehttp/guzzle": "^6.5|^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^6.5|^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Tencent\\QQ\\Open\\": "src"
+            "Tencent\\QQ\\": "src"
         },
         "files": [
+            "src/Constants/ERROR_CODE.php"
         ]
     },
     "autoload-dev": {

@@ -4,8 +4,10 @@
  * OpenAPI V3 SDK 上传文件类接口示例代码
  */
 
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
 use PHPUnit\Framework\TestCase;
-use Tencent\QQ\Open\OpenAPIV3;
+use Tencent\QQ\Open\OpenAPIv3;
 
 class Test_UploadFile extends TestCase {
 
@@ -13,23 +15,38 @@ class Test_UploadFile extends TestCase {
     private $appId = '';
     private $appKey = '';
     // OpenAPI 的服务器 IP
-    // 最新的 API 服务器地址请参考 Wiki文档：http://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3
-    private $server_name = 'openapi.tencentyun.com';
+    // 最新的 API 服务器地址请参考 Wiki文档：https://wikinew.open.qq.com/index.html#/iwiki/877913657
+    private $server_name = 'https://openapi.sparta.html5.qq.com'; // https://openapi.tencentyun.com
 
-    function testUploadFile() {
-        $openApi = (new OpenAPIV3($this->appId, $this->appKey))->setServerName($this->server_name);
-        // 所要访问的平台，pf 的其它取值参考 Wiki文档：http://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3
+    public function testUploadFile() {
+        $openApi = (new OpenAPIv3($this->appId, $this->appKey))->setServerName($this->server_name);
+        // 所要访问的平台，pf 的其它取值参考 Wiki文档：https://wikinew.open.qq.com/index.html#/iwiki/877913657
         $params = [
-            'openid' => 'User Open ID',
             'openkey' => 'Access Token',
+            'openid' => 'Open ID',
             'pf' => 'tapp'
         ];
 
-        $api_route = '/v3/t/add_pic_t';
+        $route = '/v3/t/add_pic_t';
 
-        $array_files['pic'] = 'Picture Path'; // 指定图片地址
+        $files['pic'] = 'Picture Path'; // 指定图片地址
 
-        $result = $openApi->apiUploadFile($api_route, $params, $array_files);
+        try {
+            $result = $openApi->apiUploadFile($route, $params, $files);
+        } catch (Throwable $e) {
+            print_r('Error Message: ' . $e->getMessage());
+            print_r('Error Code: ' . $e->getCode());
+
+            if ($e instanceof ClientException) {
+                print_r($e->getResponse());
+            } elseif ($e instanceof BadResponseException) {
+                print_r(json_decode($e->getResponse()->getBody(), true));
+            }
+
+            die;
+        }
+
+        print_r($result);
 
         $this->assertTrue($result['ret'] === 0);
     }
