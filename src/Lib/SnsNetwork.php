@@ -29,7 +29,7 @@ class SnsNetwork {
      * @return array
      * @throws GuzzleException
      */
-    public static function makeRequest(string $url, string $method, array $params, array $headers): array {
+    public static function makeRequest(string $url, string $method, array $params, array $headers = []): array {
         if (strtoupper($method) === 'GET') {
             $options = [
                 'headers' => $headers,
