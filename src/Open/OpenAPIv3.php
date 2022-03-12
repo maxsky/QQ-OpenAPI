@@ -91,7 +91,7 @@ class OpenAPIv3 {
     /**
      * 执行 API 调用，返回结果数组
      *
-     * @url https://wiki.open.qq.com/wiki/API%E5%88%97%E8%A1%A8
+     * @url https://wikinew.open.qq.com/index.html#/iwiki/877913446
      *
      * @param string $route   调用的 API 路由
      * @param string $method  请求方法
@@ -154,7 +154,7 @@ class OpenAPIv3 {
     /**
      * 执行上传文件 API 调用，返回结果数组
      *
-     * @url http://wiki.open.qq.com/wiki/API%E5%88%97%E8%A1%A8
+     * @url https://wikinew.open.qq.com/index.html#/iwiki/877913446
      *
      * @param string $route             调用的 API 路由
      * @param array  $params            请求参数

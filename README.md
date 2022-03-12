@@ -46,7 +46,7 @@ print_r($result);
 
 解释一下：`openkey` 为客户端（App 等）唤起 QQ，用户点击允许登录后返回的 **Access Token**，**OpenID** 也是，`pf` 一般来说填写 `qzone` 即可。
 
-返回值参考：[v3/user/get_info - 2.7 返回参数说明 - 腾讯开放平台](https://wiki.open.qq.com/wiki/v3/user/get_info#2.7.09.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E8.AF.B4.E6.98.8E)
+返回值参考：[v3/user/get_info - 腾讯开放平台帮助文档](https://wikinew.open.qq.com/index.html#/iwiki/931122987)
 
 
 

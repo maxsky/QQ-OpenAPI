@@ -38,7 +38,7 @@ class SnsNetwork {
         } else {
             $options = [
                 'headers' => $headers,
-                'json' => $params
+                'form_params' => $params
             ];
         }
 

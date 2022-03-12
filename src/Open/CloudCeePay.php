@@ -27,7 +27,7 @@ class CloudCeePay extends OpenAPIv3 {
     /**
      * 执行支付 API 调用，返回结果数组
      *
-     * @url https://wiki.open.qq.com/wiki/v3/pay/buy_goods
+     * @url https://wikinew.open.qq.com/index.html#/iwiki/940617555
      *
      * @param array  $params 调用支付 API 时带的参数
      * @param string $method
