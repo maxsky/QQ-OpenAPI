@@ -17,7 +17,7 @@ QQ 开放平台 Open API，修改自官方 SDK v3.0.9[2013-05-30]
 $openApi = (new OpenAPIv3('AppID', 'AppKey'))->setServerName('https://openapi.tencentyun.com');
 ```
 
-其中，`AppID `及 `AppKey `需在 [腾讯应用开放平台 - 我的应用](https://app.open.qq.com/p/app/list) 添加应用后获取。
+其中，`AppID` 及 `AppKey` 需在 [腾讯应用开放平台 - 我的应用](https://app.open.qq.com/p/app/list) 添加应用后获取。
 
 ### 例子：获取用户信息
 
